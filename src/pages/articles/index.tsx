@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import {GetServerSideProps} from "next";
 
 import PropTypes from "prop-types";
 
@@ -51,7 +52,7 @@ Index.propTypes = {
 
 export default React.memo(Index);
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     try {
         let articles = await getArticlesFromService();
 

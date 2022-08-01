@@ -1,17 +1,23 @@
-import React, {Suspense} from 'react';
+import React, {Dispatch, SetStateAction, Suspense} from 'react';
 import dynamic from "next/dynamic";
 
 import {BellIcon, MenuAlt2Icon} from "@heroicons/react/solid";
-import PropTypes from "prop-types";
 
 import SearchInput from "@/components/ui/form/search-input";
 import Loading from "@/components/ui/sections/loading";
+import UserNavigation from "../../interfaces/user-navigation";
 
 const ProfileDropdown = dynamic(() => import('@/components/dashboard/profile-dropdown'), {
     suspense: true,
 })
 
-function Header({userNavigation, classNames, setSidebarOpen}) {
+interface Props {
+    userNavigation: UserNavigation[];
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    classNames: (classes: string[]) => string
+}
+
+const Header: React.FC<Props> = ({userNavigation, classNames, setSidebarOpen}) => {
     return (
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gray-900 shadow">
             <button
@@ -41,12 +47,6 @@ function Header({userNavigation, classNames, setSidebarOpen}) {
             </div>
         </div>
     );
-}
-
-Header.propTypes = {
-    userNavigation: PropTypes.array,
-    setSidebarOpen: PropTypes.func,
-    classNames: PropTypes.func,
 }
 
 export default React.memo(Header);

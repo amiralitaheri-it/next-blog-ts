@@ -6,16 +6,16 @@ import {useDispatch} from "react-redux";
 import {setLoading} from "@/store/slices/loading-slice";
 import {editArticleFromService, getSingleArticleFromService} from "@/services/article-service";
 import {editArticle} from "@/store/slices/article-slice";
-import {sweetAlert} from "@/helpers/helpers";
 import InputText from "@/components/ui/form/input-text";
 import Textarea from "@/components/ui/form/textarea";
+import Article from "../../../../../interfaces/article";
 
 function Edit() {
     const dispatch = useDispatch();
     const router = useRouter();
     const articleId = router.query.id;
 
-    const [newArticle, setNewArticle] = useState(null);
+    const [newArticle, setNewArticle] = useState<Article>(null);
 
     useEffect(() => {
         getSingleArticle();
@@ -34,7 +34,6 @@ function Edit() {
             });
             dispatch(setLoading(false));
         } catch (error) {
-            sweetAlert(error.response.data.message, 'error');
             dispatch(setLoading(false));
         }
     }
@@ -50,10 +49,8 @@ function Edit() {
                 dispatch(editArticle(newArticle));
                 setNewArticle(newArticle);
                 dispatch(setLoading(false));
-                sweetAlert('مقاله موردنظر با موفقیت ویرایش شد');
                 router.push('/admin-panel/articles');
             } catch (error) {
-                sweetAlert(error.response.data.message, 'error');
                 dispatch(setLoading(false));
             }
         }

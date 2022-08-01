@@ -6,7 +6,7 @@ import BurgerMenu from "@/components/app/burger-menu";
 import NavLink from "@/components/ui/sections/nav-link";
 
 const Header = () => {
-    const [burgerMenu, setBurgerMenu] = useState(false);
+    const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
     const links = [
         {route: '/', label: 'Home'},

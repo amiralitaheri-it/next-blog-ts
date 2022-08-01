@@ -23,7 +23,7 @@ function NavItemLink() {
                 </Link>
             </li>
             <li>
-                <Link href='/articles'>
+                <Link href='/index'>
                     <a className={currentRoute === "/articles"
                         ? activeClassLink
                         : defaultClassLink

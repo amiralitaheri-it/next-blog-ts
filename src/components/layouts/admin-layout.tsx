@@ -6,14 +6,16 @@ import PropTypes from "prop-types";
 
 import Sidebar from "@/components/ui/sections/sidebar";
 import Header from "@/components/admin-panel/header";
+import UserNavigation from "../../interfaces/user-navigation";
+import Navigation from "../../interfaces/navigation";
 
-const navigation = [
+const navigation: Navigation[] = [
     {name: 'Home', href: '/admin-panel', icon: HomeIcon},
     {name: 'Articles', href: '/admin-panel/articles', icon: BookOpenIcon},
     {name: 'Users', href: '/admin-panel/users', icon: UsersIcon},
 ]
 
-const userNavigation = [
+const userNavigation: UserNavigation[] = [
     {name: 'Your Profile', href: '#'},
     {name: 'Settings', href: '#'},
     {name: 'Sign out', href: '#'},
@@ -21,7 +23,7 @@ const userNavigation = [
 
 
 function AdminLayout({children}) {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
     const classNames = useCallback((...classes) => {
         return classes.filter(Boolean).join(' ')

@@ -6,16 +6,16 @@ import {useDispatch} from "react-redux";
 import {setLoading} from "@/store/slices/loading-slice";
 import {addArticle} from "@/store/slices/article-slice";
 import {addArticleFromService} from "@/services/article-service";
-import {sweetAlert} from "@/helpers/helpers";
 import AdminLayout from "@/components/layouts/admin-layout";
 import InputText from "@/components/ui/form/input-text";
 import Textarea from "@/components/ui/form/textarea";
+import Article from "../../../interfaces/article";
 
 function Create() {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const initialArticle = {
+    const initialArticle: Article = {
         title: '',
         description: '',
         image: '',
@@ -23,7 +23,7 @@ function Create() {
         createdAt: Date.now(),
     }
 
-    const [article, setArticle] = useState(initialArticle);
+    const [article, setArticle] = useState<Article>(initialArticle);
 
     const createArticleHandler = async (event) => {
         event.preventDefault();
@@ -34,11 +34,9 @@ function Create() {
                 dispatch(addArticle(newArticle));
                 setArticle(initialArticle);
                 dispatch(setLoading(false));
-                sweetAlert('کاربر موردنظر با موفقیت ایجاد شد');
 
                 await router.push('/admin-panel/articles');
             } catch (error) {
-                sweetAlert(error.response.data.message, 'error');
                 dispatch(setLoading(false));
             }
         }

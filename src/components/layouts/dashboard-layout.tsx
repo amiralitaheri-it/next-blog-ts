@@ -4,24 +4,29 @@ import {HomeIcon, UsersIcon,} from '@heroicons/react/outline'
 
 import Sidebar from "@/components/ui/sections/sidebar";
 import HeaderDashboard from "@/components/dashboard/header-dashboard";
-import PropTypes from "prop-types";
+import UserNavigation from "../../interfaces/user-navigation";
+import Navigation from "../../interfaces/navigation";
 
 
-const navigation = [
+const navigation: Navigation[] = [
     {name: 'Home', href: '/dashboard', icon: HomeIcon, current: true},
     {name: 'Profile', href: '/dashboard/profile', icon: UsersIcon, current: false},
 ]
 
-const userNavigation = [
+const userNavigation: UserNavigation[] = [
     {name: 'Your Profile', href: '#'},
     {name: 'Settings', href: '#'},
     {name: 'Sign out', href: '#'},
 ]
 
-function DashboardLayout({children}) {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+interface Props {
+    children: JSX.Element
+}
 
-    const classNames = useCallback((...classes) => {
+const DashboardLayout: React.FC<Props> = ({children}) => {
+    const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+    const classNames = useCallback((...classes: string[]): string => {
         return classes.filter(Boolean).join(' ')
     }, []);
 
@@ -45,13 +50,6 @@ function DashboardLayout({children}) {
             </div>
         </>
     );
-}
-
-DashboardLayout.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
 }
 
 export default React.memo(DashboardLayout);

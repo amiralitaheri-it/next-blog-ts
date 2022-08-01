@@ -4,6 +4,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 
 import {getSingleArticleFromService} from "@/services/article-service";
+import {GetServerSideProps} from "next";
 
 function Single({article}) {
 
@@ -25,7 +26,7 @@ Single.propTypes = {
 
 export default React.memo(Single);
 
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps: GetServerSideProps = async ({params}) => {
     try {
         let article = await getSingleArticleFromService(params.id);
 

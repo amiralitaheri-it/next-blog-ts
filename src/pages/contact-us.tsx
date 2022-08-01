@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from "next/image";
+import {NextPage} from "next";
 
 import contactUs from "@/public/images/contact-us.jpg";
 
-function ContactUs() {
+const ContactUs: NextPage = () => {
     return (
         <>
             <div className='mt-10 mb-10 text-3xl'>Contact Us</div>

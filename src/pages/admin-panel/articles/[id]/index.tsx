@@ -6,10 +6,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {setLoading} from "@/store/slices/loading-slice";
 import {getSingleArticleFromService} from "@/services/article-service";
-import {sweetAlert} from "@/helpers/helpers";
 import Loading from "@/components/ui/sections/loading";
 import AdminLayout from "@/components/layouts/admin-layout";
 import DeleteModal from "@/components/articles/delete-modal";
+import {RootState} from "@/store/index";
+import Article from "../../../../interfaces/article";
 
 function Single() {
     const dispatch = useDispatch();
@@ -17,9 +18,9 @@ function Single() {
     const router = useRouter();
     const articleId = router.query.id;
 
-    const loading = useSelector((state) => state.loading.show);
+    const loading = useSelector((state: RootState) => state.loading.show);
 
-    const [singleArticle, setSingleArticle] = useState(null);
+    const [singleArticle, setSingleArticle] = useState<Article>(null);
 
     useEffect(() => {
         getSingleArticle();
@@ -32,7 +33,6 @@ function Single() {
             setSingleArticle(user);
             dispatch(setLoading(false));
         } catch (error) {
-            sweetAlert(error.response.data.message, 'error');
             dispatch(setLoading(false));
         }
     }

@@ -2,8 +2,9 @@ import React from 'react';
 import Image from "next/image";
 
 import aboutUs from '@/public/images/about-us.png'
+import {NextPage} from "next";
 
-function AboutUs() {
+const AboutUs: NextPage = () => {
     return (
         <>
             <div className='mt-10 mb-10 text-3xl'>About Us</div>

@@ -1,21 +1,19 @@
 import React, {useEffect} from 'react';
 import Link from "next/link";
-
-import {useDispatch, useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector} from '@/hooks/redux-hooks';
 
 import {getArticlesFromService} from "@/services/article-service";
 import {setArticles} from "@/store/slices/article-slice";
 import {setLoading} from "@/store/slices/loading-slice";
-import {sweetAlert} from "@/helpers/helpers";
 import AdminLayout from "@/components/layouts/admin-layout";
 import TableHeader from "@/components/ui/sections/table-header";
 import Loading from "@/components/ui/sections/loading";
 import Item from "@/components/articles/item";
 
 function Index() {
-    const dispatch = useDispatch();
-    const articlesList = useSelector((state) => state.articles.list);
-    const loading = useSelector((state) => state.loading.show);
+    const dispatch = useAppDispatch();
+    const articlesList = useAppSelector((state) => state.articles.list);
+    const loading = useAppSelector((state) => state.loading.show);
 
     useEffect(() => {
         getArticles();
@@ -28,7 +26,6 @@ function Index() {
             dispatch(setArticles(articles));
             dispatch(setLoading(false));
         } catch (error) {
-            sweetAlert(error.response.data.message, 'error');
             dispatch(setLoading(false));
         }
     }
