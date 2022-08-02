@@ -4,7 +4,7 @@ import Header from "@/components/app/header";
 import Footer from "@/components/app/footer";
 
 interface Props {
-    children: JSX.Element
+    children: React.ReactNode;
 }
 
 const AppLayout: React.FC<Props> = ({children}) => {

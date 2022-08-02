@@ -1,8 +1,9 @@
 import React from 'react';
+import {NextPage} from "next";
 
 import DashboardLayout from "@/components/layouts/dashboard-layout";
 
-function Profile() {
+const Profile: NextPage = () => {
     return (
         <div className="text-white mt-10">This is your profile</div>
     );

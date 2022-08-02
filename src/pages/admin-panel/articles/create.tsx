@@ -26,7 +26,7 @@ function Create() {
 
     const [article, setArticle] = useState<Article>(initialArticle);
 
-    const createArticleHandler = async (event) => {
+    const createArticleHandler = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         dispatch(setLoading(true));
         if (article) {

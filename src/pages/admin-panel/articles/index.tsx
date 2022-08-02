@@ -10,7 +10,7 @@ import TableHeader from "@/components/ui/sections/table-header";
 import Loading from "@/components/ui/sections/loading";
 import Item from "@/components/articles/item";
 
-function Index() {
+const Index = () => {
     const dispatch = useAppDispatch();
     const articlesList = useAppSelector((state) => state.articles.list);
     const loading = useAppSelector((state) => state.loading.show);

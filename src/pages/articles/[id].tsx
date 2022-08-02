@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from "next/image";
-
-import PropTypes from "prop-types";
+import {GetServerSideProps, NextPage} from "next";
 
 import {getSingleArticleFromService} from "@/services/article-service";
-import {GetServerSideProps} from "next";
+import Article from "@/interfaces/article";
 
-function Single({article}) {
+interface Props {
+    article: Article
+}
+
+const Single: NextPage<Props> = ({article}) => {
 
     return (
         <>
@@ -18,10 +21,6 @@ function Single({article}) {
             <h2 className='mt-5 text-center max-w-2xl'>{article?.description}</h2>
         </>
     );
-}
-
-Single.propTypes = {
-    article: PropTypes.object.isRequired,
 }
 
 export default React.memo(Single);

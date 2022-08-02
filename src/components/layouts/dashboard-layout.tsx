@@ -21,7 +21,7 @@ const userNavigation: UserNavigation[] = [
 ]
 
 interface Props {
-    children: JSX.Element
+    children: React.ReactNode;
 }
 
 const DashboardLayout: React.FC<Props> = ({children}) => {

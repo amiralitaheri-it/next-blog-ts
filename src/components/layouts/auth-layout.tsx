@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from "@/components/app/footer";
 
 interface Props {
-    children: JSX.Element
+    children: React.ReactNode;
 }
 
 const AuthLayout: React.FC<Props> = ({children}) => {

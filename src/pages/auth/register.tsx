@@ -1,22 +1,15 @@
 import React from 'react';
+import {router} from "next/client";
+import {NextPage} from "next";
 
 import {toast} from "react-toastify";
-import {router} from "next/client";
 
 import AuthLayout from "@/components/layouts/auth-layout";
 import HeaderForm from "@/components/auth/header-form";
 
-function Login() {
-    const loginUser = () => {
-        toast('Login successfully!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+const Register: NextPage = () => {
+    const RegisterUser = () => {
+        toast.success('Registered successfully!');
         router.push('/');
     };
 
@@ -24,12 +17,27 @@ function Login() {
         <div className="min-h-full flex">
             <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
                 <div className="mx-auto w-full max-w-sm lg:w-96">
-                    <HeaderForm title='Login with your account' linkText='Register now' routeName='register'/>
+                    <HeaderForm title='Sign up an new account' linkText='Login now' routeName='login'/>
 
                     <div className="mt-8">
-
                         <div className="mt-6">
                             <form action="#" method="POST" className="space-y-6">
+                                <div>
+                                    <label htmlFor="email" className="block text-sm font-medium text-gray-400">
+                                        Name
+                                    </label>
+                                    <div className="mt-1">
+                                        <input
+                                            id="name"
+                                            name="name"
+                                            type="text"
+                                            autoComplete="name"
+                                            required
+                                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        />
+                                    </div>
+                                </div>
+
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-400">
                                         Email address
@@ -84,10 +92,10 @@ function Login() {
 
                                 <div>
                                     <button
-                                        onClick={loginUser}
+                                        onClick={RegisterUser}
                                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
-                                        Sign in
+                                        Register
                                     </button>
                                 </div>
                             </form>
@@ -99,9 +107,9 @@ function Login() {
     );
 }
 
-export default React.memo(Login);
+export default React.memo(Register);
 
-Login.getLayout = (page) => {
+Register.getLayout = (page) => {
     return (
         <AuthLayout>
             {page}

@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeaderAuthButtons: React.FC = () => {
     return (
         <>
-            <Link href='/admin-panel' passHref>
+            <Link href='/index' passHref>
                 <button
                     className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                           <span
@@ -13,7 +13,7 @@ const HeaderAuthButtons: React.FC = () => {
                           </span>
                 </button>
             </Link>
-            <Link href='/dashboard' passHref>
+            <Link href='/index' passHref>
                 <button
                     className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                       <span

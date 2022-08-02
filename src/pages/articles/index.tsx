@@ -1,13 +1,16 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import {GetServerSideProps} from "next";
-
-import PropTypes from "prop-types";
+import {GetServerSideProps, NextPage} from "next";
 
 import {getArticlesFromService} from "@/services/article-service";
+import Article from "@/interfaces/article";
 
-function Index({articles}) {
+interface Props {
+    articles: Article[]
+}
+
+const Index: NextPage<Props> = ({articles}) => {
 
     return (
         <div className='p-8 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-3 gap-10 mt-5'>
@@ -44,10 +47,6 @@ function Index({articles}) {
             }
         </div>
     );
-}
-
-Index.propTypes = {
-    articles: PropTypes.array.isRequired,
 }
 
 export default React.memo(Index);

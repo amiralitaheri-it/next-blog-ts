@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
+import {NextPage} from "next";
 
 import {useDispatch} from "react-redux";
 
@@ -10,16 +11,16 @@ import InputText from "@/components/ui/form/input-text";
 import Textarea from "@/components/ui/form/textarea";
 import Article from "@/interfaces/article";
 
-function Edit() {
+const Edit: NextPage = () => {
     const dispatch = useDispatch();
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const articleId = router.query.id;
 
     const [newArticle, setNewArticle] = useState<Article>(null);
 
     useEffect(() => {
         getSingleArticle();
-    }, [])
+    }, []);
 
     const getSingleArticle = async () => {
         try {
@@ -49,7 +50,7 @@ function Edit() {
                 dispatch(editArticle(newArticle));
                 setNewArticle(newArticle);
                 dispatch(setLoading(false));
-                router.push('/admin-panel/articles');
+                await router.push('/admin-panel/articles');
             } catch (error) {
                 dispatch(setLoading(false));
             }

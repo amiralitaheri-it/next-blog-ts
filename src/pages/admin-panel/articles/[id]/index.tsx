@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
+import {NextPage} from "next";
 
 import {UserCircleIcon} from "@heroicons/react/solid";
 import {useDispatch, useSelector} from "react-redux";
@@ -12,10 +13,10 @@ import DeleteModal from "@/components/articles/delete-modal";
 import {RootState} from "@/store/index";
 import Article from "@/interfaces/article";
 
-function Single() {
+const Single: NextPage = () => {
     const dispatch = useDispatch();
 
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const articleId = router.query.id;
 
     const loading = useSelector((state: RootState) => state.loading.show);
@@ -24,9 +25,9 @@ function Single() {
 
     useEffect(() => {
         getSingleArticle();
-    }, [])
+    }, []);
 
-    const getSingleArticle = async () => {
+    const getSingleArticle = async (): Promise<void> => {
         dispatch(setLoading(true));
         try {
             let user = await getSingleArticleFromService(articleId);

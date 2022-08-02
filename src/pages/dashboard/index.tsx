@@ -1,8 +1,9 @@
 import React from 'react';
+import {NextPage} from "next";
 
 import DashboardLayout from "@/components/layouts/dashboard-layout";
- 
-function Index() {
+
+const Index: NextPage = () => {
     return (
         <div className="text-white mt-10">Welcome to Dashboard</div>
     );
