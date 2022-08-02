@@ -1,11 +1,13 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
-
 import Header from "@/components/app/header";
 import Footer from "@/components/app/footer";
 
-function AppLayout({children}) {
+interface Props {
+    children: JSX.Element
+}
+
+const AppLayout: React.FC<Props> = ({children}) => {
     return (
         <>
             <Header/>
@@ -15,13 +17,6 @@ function AppLayout({children}) {
             <Footer/>
         </>
     );
-}
-
-AppLayout.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
 }
 
 export default React.memo(AppLayout);

@@ -10,7 +10,7 @@ import Loading from "@/components/ui/sections/loading";
 import AdminLayout from "@/components/layouts/admin-layout";
 import DeleteModal from "@/components/articles/delete-modal";
 import {RootState} from "@/store/index";
-import Article from "../../../../interfaces/article";
+import Article from "@/interfaces/article";
 
 function Single() {
     const dispatch = useDispatch();

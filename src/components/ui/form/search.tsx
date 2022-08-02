@@ -2,7 +2,7 @@ import React from 'react';
 
 import {SearchIcon} from "@heroicons/react/solid";
 
-function Search() {
+const Search: React.FC = () => {
     return (
 
         <div className="flex-1 flex">

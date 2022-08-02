@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from "next/link";
 
-import PropTypes from "prop-types";
+interface Props {
+    title: string;
+    linkText: string;
+    routeName: string;
+}
 
-function HeaderForm({title, linkText, routeName}) {
+const HeaderForm: React.FC<Props> = ({title, linkText, routeName}) => {
     return (
         <div>
             <img
@@ -20,12 +24,6 @@ function HeaderForm({title, linkText, routeName}) {
             </p>
         </div>
     );
-}
-
-HeaderForm.propTypes = {
-    title: PropTypes.string,
-    linkText: PropTypes.string,
-    routeName: PropTypes.string.isRequired,
 }
 
 export default React.memo(HeaderForm);

@@ -9,7 +9,8 @@ import {addArticleFromService} from "@/services/article-service";
 import AdminLayout from "@/components/layouts/admin-layout";
 import InputText from "@/components/ui/form/input-text";
 import Textarea from "@/components/ui/form/textarea";
-import Article from "../../../interfaces/article";
+import Article from "@/interfaces/article";
+import {setItemOnEventHandler} from "@/types/global";
 
 function Create() {
     const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function Create() {
         }
     }
 
-    const setArticleItem = (event) => {
+    const setArticleItem: setItemOnEventHandler = (event) => {
         setArticle({
             ...article,
             [event.target.name]: event.target.value

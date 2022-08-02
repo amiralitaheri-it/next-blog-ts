@@ -1,8 +1,10 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
+interface Props {
+    label: string;
+}
 
-function Logo({label}) {
+const Logo: React.FC<Props> = ({label}) => {
     return (
         <a className="flex">
             <svg
@@ -29,10 +31,6 @@ function Logo({label}) {
             </span>
         </a>
     );
-}
-
-Logo.propTypes = {
-    label: PropTypes.string
 }
 
 export default React.memo(Logo);

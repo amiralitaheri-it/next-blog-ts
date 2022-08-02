@@ -1,9 +1,12 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
 import Footer from "@/components/app/footer";
 
-function AuthLayout({children}) {
+interface Props {
+    children: JSX.Element
+}
+
+const AuthLayout: React.FC<Props> = ({children}) => {
     return (
         <>
             <div className='dark:text-gray-400 text-gray-700 grid place-items-center'>
@@ -12,13 +15,6 @@ function AuthLayout({children}) {
             <Footer/>
         </>
     );
-}
-
-AuthLayout.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
 }
 
 export default React.memo(AuthLayout);

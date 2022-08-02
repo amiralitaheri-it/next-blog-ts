@@ -1,22 +1,26 @@
 import React, {useCallback, useState} from 'react';
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
 
 import {useDispatch} from "react-redux";
 import {TrashIcon} from "@heroicons/react/solid";
-import PropTypes from "prop-types";
 
 import {deleteArticleFromService} from "@/services/article-service";
 import {deleteArticle} from "@/store/slices/article-slice";
 import {setLoading} from "@/store/slices/loading-slice";
 import Delete from "@/components/ui/modals/delete";
+import {deleteHandlerFunc} from "@/types/global";
 
-function DeleteModal({articleId}) {
+interface Props {
+    articleId: number;
+}
+
+const DeleteModal: React.FC<Props> = ({articleId}) => {
     const [showDeleteModal, setDeleteModal] = useState<boolean>(false);
 
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const dispatch = useDispatch();
 
-    let deleteHandler = useCallback(async () => {
+    let deleteHandler: deleteHandlerFunc = useCallback(async () => {
         dispatch(setLoading(true));
 
         setDeleteModal(false);
@@ -38,10 +42,6 @@ function DeleteModal({articleId}) {
             {showDeleteModal && <Delete deleteHandler={deleteHandler} setDeleteModal={setDeleteModal}/>}
         </>
     )
-}
-
-DeleteModal.propTypes = {
-    articleId: PropTypes.number.isRequired
 }
 
 export default React.memo(DeleteModal);

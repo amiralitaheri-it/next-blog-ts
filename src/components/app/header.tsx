@@ -4,11 +4,12 @@ import HeaderAuthButtons from "@/components/app/header-auth-buttons";
 import Logo from "@/components/app/logo";
 import BurgerMenu from "@/components/app/burger-menu";
 import NavLink from "@/components/ui/sections/nav-link";
+import Link from "@/interfaces/link";
 
-const Header = () => {
+const Header: React.FC = () => {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
-    const links = [
+    const links: Link[] = [
         {route: '/', label: 'Home'},
         {route: '/articles', label: 'Articles'},
         {route: '/about-us', label: 'About us'},

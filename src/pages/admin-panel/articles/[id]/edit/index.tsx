@@ -8,7 +8,7 @@ import {editArticleFromService, getSingleArticleFromService} from "@/services/ar
 import {editArticle} from "@/store/slices/article-slice";
 import InputText from "@/components/ui/form/input-text";
 import Textarea from "@/components/ui/form/textarea";
-import Article from "../../../../../interfaces/article";
+import Article from "@/interfaces/article";
 
 function Edit() {
     const dispatch = useDispatch();

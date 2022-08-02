@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 
-import PropTypes from "prop-types";
+interface Props {
+    burgerMenu: boolean;
+    setBurgerMenu: Dispatch<SetStateAction<boolean>>;
+}
 
-function BurgerMenu({burgerMenu, setBurgerMenu}) {
+const BurgerMenu: React.FC<Props> = ({burgerMenu, setBurgerMenu}) => {
     return (
         <button
             onClick={() => setBurgerMenu(!burgerMenu)}
@@ -37,11 +40,6 @@ function BurgerMenu({burgerMenu, setBurgerMenu}) {
             </svg>
         </button>
     );
-}
-
-BurgerMenu.propTypes = {
-    burgerMenu: PropTypes.bool.isRequired,
-    setBurgerMenu: PropTypes.func.isRequired,
 }
 
 export default React.memo(BurgerMenu);

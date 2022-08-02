@@ -4,8 +4,9 @@ import {HomeIcon, UsersIcon,} from '@heroicons/react/outline'
 
 import Sidebar from "@/components/ui/sections/sidebar";
 import HeaderDashboard from "@/components/dashboard/header-dashboard";
-import UserNavigation from "../../interfaces/user-navigation";
-import Navigation from "../../interfaces/navigation";
+import UserNavigation from "@/interfaces/user-navigation";
+import Navigation from "@/interfaces/navigation";
+import {className} from "@/types/global";
 
 
 const navigation: Navigation[] = [
@@ -26,7 +27,7 @@ interface Props {
 const DashboardLayout: React.FC<Props> = ({children}) => {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-    const classNames = useCallback((...classes: string[]): string => {
+    const classNames: className = useCallback((...classes: string[]): string => {
         return classes.filter(Boolean).join(' ')
     }, []);
 

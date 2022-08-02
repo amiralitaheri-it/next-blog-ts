@@ -22,6 +22,12 @@
       ],
       "@/hooks/*": [
         "hooks/*"
+      ],
+      "@/interfaces/*": [
+        "interfaces/*"
+      ],
+      "@/types/*": [
+        "types/*"
       ]
     },
     "moduleResolution": "node",

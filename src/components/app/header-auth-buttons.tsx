@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 
-function HeaderAuthButtons() {
+const HeaderAuthButtons: React.FC = () => {
     return (
         <>
             <Link href='/admin-panel' passHref>

@@ -1,10 +1,16 @@
-import React from 'react';
-
-import PropTypes from "prop-types";
+import React, {Dispatch, SetStateAction} from 'react';
 
 import HeaderDashboard from "@/components/dashboard/header-dashboard";
+import UserNavigation from "@/interfaces/user-navigation";
 
-function MainContent({userNavigation, setSidebarOpen, classNames}) {
+interface Props {
+    userNavigation: UserNavigation[];
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    classNames: (classes: string[]) => string;
+    children: JSX.Element;
+}
+
+const MainContent: React.FC<Props> = ({userNavigation, setSidebarOpen, classNames, children}) => {
     return (
         <div className="md:pl-64 flex flex-col">
             <HeaderDashboard userNavigation={userNavigation} setSidebarOpen={setSidebarOpen} classNames={classNames}/>
@@ -22,12 +28,6 @@ function MainContent({userNavigation, setSidebarOpen, classNames}) {
             </main>
         </div>
     );
-}
-
-MainContent.propTypes = {
-    userNavigation: PropTypes.array,
-    setSidebarOpen: PropTypes.func,
-    classNames: PropTypes.func,
 }
 
 export default React.memo(MainContent);

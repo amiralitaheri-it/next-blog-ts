@@ -2,11 +2,15 @@ import React from 'react';
 import Link from "next/link";
 
 import {EyeIcon, PencilAltIcon} from "@heroicons/react/solid";
-import PropTypes from "prop-types";
 
 import DeleteModal from "@/components/articles/delete-modal";
+import Article from "@/interfaces/article";
 
-function Item({article}) {
+interface Props {
+    article: Article;
+}
+
+const Item: React.FC<Props> = ({article}) => {
     return (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition duration-200">
             <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap text-center">
@@ -32,10 +36,6 @@ function Item({article}) {
             </td>
         </tr>
     );
-}
-
-Item.propTypes = {
-    article: PropTypes.object.isRequired
 }
 
 export default React.memo(Item);

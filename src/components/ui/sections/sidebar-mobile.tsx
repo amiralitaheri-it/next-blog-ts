@@ -1,11 +1,18 @@
-import React, {Fragment} from 'react';
+import React, {Dispatch, Fragment, SetStateAction} from 'react';
 import Link from "next/link";
 
 import {XIcon} from "@heroicons/react/outline";
 import {Dialog, Transition} from "@headlessui/react";
-import PropTypes from "prop-types";
+import Navigation from "@/interfaces/navigation";
 
-function SidebarMobile({navigation, currentRoute, classNames, setSidebarOpen}) {
+interface Props {
+    navigation: Navigation[];
+    currentRoute: string;
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    classNames: (classes: string[]) => string;
+}
+
+const SidebarMobile: React.FC<Props> = ({navigation, currentRoute, classNames, setSidebarOpen}) => {
     return (
         <Transition.Root show={true} as={Fragment}>
             <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
@@ -62,16 +69,16 @@ function SidebarMobile({navigation, currentRoute, classNames, setSidebarOpen}) {
                                 {navigation.map((item) => (
                                     <Link href={item.href} key={item.name}>
                                         <a
-                                            className={classNames(
+                                            className={classNames([
                                                 currentRoute === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                 'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                                            )}
+                                            ])}
                                         >
                                             <item.icon
-                                                className={classNames(
+                                                className={classNames([
                                                     currentRoute === item.href ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
                                                     'mr-4 flex-shrink-0 h-6 w-6'
-                                                )}
+                                                ])}
                                                 aria-hidden="true"
                                             />
                                             {item.name}
@@ -103,13 +110,6 @@ function SidebarMobile({navigation, currentRoute, classNames, setSidebarOpen}) {
             </Dialog>
         </Transition.Root>
     );
-}
-
-SidebarMobile.propTypes = {
-    navigation: PropTypes.array,
-    setSidebarOpen: PropTypes.func,
-    classNames: PropTypes.func,
-    sidebarOpen: PropTypes.bool,
 }
 
 export default React.memo(SidebarMobile);

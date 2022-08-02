@@ -1,17 +1,23 @@
-import React, {Suspense} from 'react';
+import React, {Dispatch, SetStateAction, Suspense} from 'react';
 import dynamic from "next/dynamic";
 
 import {BellIcon, MenuAlt2Icon} from "@heroicons/react/solid";
-import PropTypes from "prop-types";
 
 import Search from "@/components/ui/form/search";
 import Loading from "@/components/ui/sections/loading";
+import UserNavigation from "@/interfaces/user-navigation";
 
 const ProfileDropdown = dynamic(() => import('@/components/dashboard/profile-dropdown'), {
     suspense: true,
 })
 
-function HeaderDashboard({userNavigation, setSidebarOpen, classNames}) {
+interface Props {
+    userNavigation: UserNavigation[];
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    classNames: (...classes: any[]) => string;
+}
+
+const HeaderDashboard: React.FC<Props> = ({userNavigation, setSidebarOpen, classNames}) => {
     return (
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-gray-900 shadow">
             <button
@@ -40,12 +46,6 @@ function HeaderDashboard({userNavigation, setSidebarOpen, classNames}) {
             </div>
         </div>
     );
-}
-
-HeaderDashboard.propTypes = {
-    userNavigation: PropTypes.object,
-    setSidebarOpen: PropTypes.func,
-    classNames: PropTypes.func,
 }
 
 export default React.memo(HeaderDashboard);

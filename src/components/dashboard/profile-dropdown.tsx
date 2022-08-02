@@ -1,9 +1,14 @@
 import React, {Fragment} from 'react';
 
 import {Menu, Transition} from "@headlessui/react";
-import PropTypes from "prop-types";
+import UserNavigation from "@/interfaces/user-navigation";
 
-function ProfileDropdown({userNavigation, classNames}) {
+interface Props {
+    userNavigation: UserNavigation[];
+    classNames: (...classes: any[]) => string;
+}
+
+const ProfileDropdown: React.FC<Props> = ({userNavigation, classNames}) => {
 
     return (
         <Menu as="div" className="ml-3 relative">
@@ -47,11 +52,6 @@ function ProfileDropdown({userNavigation, classNames}) {
             </Transition>
         </Menu>
     );
-}
-
-ProfileDropdown.propTypes = {
-    userNavigation: PropTypes.array,
-    classNames: PropTypes.func,
 }
 
 export default React.memo(ProfileDropdown);

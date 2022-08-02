@@ -1,8 +1,15 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
+import {setItemOnEventHandler} from "@/types/global";
 
-function InputText({labelName, handler, nameAttr, defValue = ''}) {
+interface Props {
+    labelName: string;
+    handler: setItemOnEventHandler;
+    nameAttr: string;
+    defValue?: string;
+}
+
+const InputText: React.FC<Props> = ({labelName, handler, nameAttr, defValue = ''}) => {
     return (
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
             <label htmlFor="first-name" className="block text-sm font-medium text-gray-300 sm:mt-px sm:pt-2">
@@ -16,13 +23,6 @@ function InputText({labelName, handler, nameAttr, defValue = ''}) {
             </div>
         </div>
     );
-}
-
-InputText.propTypes = {
-    labelName: PropTypes.string,
-    handler: PropTypes.func.isRequired,
-    nameAttr: PropTypes.string.isRequired,
-    defValue: PropTypes.string
 }
 
 export default React.memo(InputText);

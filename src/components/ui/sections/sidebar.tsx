@@ -1,26 +1,32 @@
-import React, {Suspense} from 'react';
+import React, {Dispatch, SetStateAction, Suspense} from 'react';
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {useRouter} from "next/router";
-
-import PropTypes from "prop-types";
 import Loading from "@/components/ui/sections/loading";
+import Navigation from "@/interfaces/navigation";
 
-const SidebarMobile = dynamic(() => import('./sidebar-mobile'), {
+const SidebarMobile = dynamic(() => import('@/components/ui/sections/sidebar-mobile'), {
     suspense: true,
     ssr: false
 })
 
-function Sidebar({navigation, classNames, sidebarOpen, setSidebarOpen}) {
+interface Props {
+    navigation: Navigation[];
+    sidebarOpen: boolean;
+    setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+    classNames: (classes: string[]) => string;
+}
+
+const Sidebar: React.FC<Props> = ({navigation, classNames, sidebarOpen, setSidebarOpen}) => {
     const router = useRouter();
     const currentRoute = router.pathname;
 
     return (
         <>
             <Suspense fallback={<Loading/>}>
-                {sidebarOpen &&
-                    <SidebarMobile currentRoute={currentRoute} navigation={navigation} classNames={classNames} sidebarOpen={sidebarOpen}
-                                   setSidebarOpen={setSidebarOpen}/>
+                {
+                    sidebarOpen &&
+                    <SidebarMobile currentRoute={currentRoute} navigation={navigation} classNames={classNames} setSidebarOpen={setSidebarOpen}/>
                 }
             </Suspense>
             <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
@@ -37,15 +43,15 @@ function Sidebar({navigation, classNames, sidebarOpen, setSidebarOpen}) {
                         <nav className="mt-5 flex-1 px-2 space-y-1">
                             {navigation.map((item) => (
                                 <Link href={item.href} key={item.name}>
-                                    <a className={classNames(
+                                    <a className={classNames([
                                         currentRoute === item.href ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                         'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                                    )}>
+                                    ])}>
                                         <item.icon
-                                            className={classNames(
+                                            className={classNames([
                                                 item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
                                                 'mr-3 flex-shrink-0 h-6 w-6'
-                                            )}
+                                            ])}
                                             aria-hidden="true"
                                         />
                                         {item.name}
@@ -75,13 +81,6 @@ function Sidebar({navigation, classNames, sidebarOpen, setSidebarOpen}) {
             </div>
         </>
     )
-}
-
-Sidebar.propTypes = {
-    navigation: PropTypes.array,
-    setSidebarOpen: PropTypes.func,
-    classNames: PropTypes.func,
-    sidebarOpen: PropTypes.bool,
 }
 
 export default React.memo(Sidebar);

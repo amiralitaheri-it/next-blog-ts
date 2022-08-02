@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import Article from "../../interfaces/article";
+import Article from "@/interfaces/article";
 
 let initialState = {
     list: [] as Article[]

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {SearchIcon} from "@heroicons/react/solid";
 
-function SearchInput() {
+const SearchInput: React.FC = () => {
     return (
         <form className="w-full flex md:ml-0" action="#" method="GET">
             <label htmlFor="search-field" className="sr-only">

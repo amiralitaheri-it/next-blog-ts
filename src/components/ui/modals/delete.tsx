@@ -1,11 +1,16 @@
-import React, {Fragment, useRef} from 'react';
+import React, {Dispatch, Fragment, SetStateAction, useRef} from 'react';
 
 import {Dialog, Transition} from "@headlessui/react";
 import {ExclamationIcon} from '@heroicons/react/outline';
-import PropTypes from "prop-types";
+import {deleteHandlerFunc} from "@/types/global";
 
-function Delete({deleteHandler, setDeleteModal}) {
-    const cancelButtonRef = useRef(null);
+interface Props {
+    deleteHandler: deleteHandlerFunc;
+    setDeleteModal: Dispatch<SetStateAction<boolean>>;
+}
+
+const Delete: React.FC<Props> = ({deleteHandler, setDeleteModal}) => {
+    const cancelButtonRef = useRef<HTMLButtonElement>(null);
 
     return (
         <Transition.Root show={true} as={Fragment}>
@@ -55,19 +60,19 @@ function Delete({deleteHandler, setDeleteModal}) {
                                 </div>
                             </div>
                             <div className="mt-5 sm:mt-4 sm:ml-10 sm:pl-4 sm:flex justify-center">
-                                    <span
-                                        className="inline-flex cursor-pointer justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-sm"
-                                        onClick={deleteHandler}
-                                    >
-                                        حذف
-                                    </span>
-                                <span
+                                <button
+                                    className="inline-flex cursor-pointer justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-sm"
+                                    onClick={deleteHandler}
+                                >
+                                    حذف
+                                </button>
+                                <button
                                     className="mt-3 cursor-pointer w-full inline-flex justify-center rounded-md border border-gray-300 px-4 py-2 bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                                     onClick={() => setDeleteModal(false)}
                                     ref={cancelButtonRef}
                                 >
-                                        انصراف
-                                    </span>
+                                    انصراف
+                                </button>
                             </div>
                         </div>
                     </Transition.Child>
@@ -75,11 +80,6 @@ function Delete({deleteHandler, setDeleteModal}) {
             </Dialog>
         </Transition.Root>
     );
-}
-
-Delete.propTypes = {
-    deleteHandler: PropTypes.func.isRequired,
-    setDeleteModal: PropTypes.func.isRequired
 }
 
 export default React.memo(Delete);

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import Loading from "../../interfaces/loading";
+import Loading from "@/interfaces/loading";
 
 let initialState: Loading = {
     show: false

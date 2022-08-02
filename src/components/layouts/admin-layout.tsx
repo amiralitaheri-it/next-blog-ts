@@ -2,12 +2,12 @@ import React, {useCallback, useState} from 'react';
 
 import {HomeIcon, UsersIcon,} from '@heroicons/react/outline'
 import {BookOpenIcon} from "@heroicons/react/solid";
-import PropTypes from "prop-types";
 
 import Sidebar from "@/components/ui/sections/sidebar";
 import Header from "@/components/admin-panel/header";
-import UserNavigation from "../../interfaces/user-navigation";
-import Navigation from "../../interfaces/navigation";
+import UserNavigation from "@/interfaces/user-navigation";
+import Navigation from "@/interfaces/navigation";
+import {className} from "@/types/global";
 
 const navigation: Navigation[] = [
     {name: 'Home', href: '/admin-panel', icon: HomeIcon},
@@ -21,11 +21,14 @@ const userNavigation: UserNavigation[] = [
     {name: 'Sign out', href: '#'},
 ]
 
+interface Props {
+    children: JSX.Element
+}
 
-function AdminLayout({children}) {
+const AdminLayout: React.FC<Props> = ({children}) => {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-    const classNames = useCallback((...classes) => {
+    const classNames: className = useCallback((...classes) => {
         return classes.filter(Boolean).join(' ')
     }, []);
 
@@ -49,13 +52,6 @@ function AdminLayout({children}) {
             </div>
         </>
     );
-}
-
-AdminLayout.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
 }
 
 export default React.memo(AdminLayout);

@@ -1,8 +1,10 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
+interface Props {
+    headerFields: string[]
+}
 
-function TableHeader({headerFields}) {
+const TableHeader: React.FC<Props> = ({headerFields}) => {
     return (
         <thead className="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -16,10 +18,6 @@ function TableHeader({headerFields}) {
         </tr>
         </thead>
     );
-}
-
-TableHeader.propTypes = {
-    headerFields: PropTypes.array
 }
 
 export default React.memo(TableHeader);
