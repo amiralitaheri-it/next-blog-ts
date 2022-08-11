@@ -3,6 +3,7 @@ import {NextRouter, useRouter} from "next/router";
 import {NextPage} from "next";
 
 import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 
 import {setLoading} from "@/store/slices/loading-slice";
 import {editArticleFromService, getSingleArticleFromService} from "@/services/article-service";
@@ -10,9 +11,9 @@ import {editArticle} from "@/store/slices/article-slice";
 import InputText from "@/components/ui/forms/input-text";
 import Textarea from "@/components/ui/forms/textarea";
 import Article from "@/interfaces/article";
-import {toast} from "react-toastify";
+import AdminLayout from "@/components/layouts/admin-layout";
 
-const Edit: NextPage = () => {
+const Edit: NextPage & any = () => {
     const dispatch = useDispatch();
     const router: NextRouter = useRouter();
     const articleId = router.query.id;
@@ -50,8 +51,10 @@ const Edit: NextPage = () => {
                 await editArticleFromService(newArticle);
                 dispatch(editArticle(newArticle));
                 setNewArticle(newArticle);
-                toast.success('Article edited successfully!');
                 dispatch(setLoading(false));
+                setTimeout(() => {
+                    toast.success('Article edited successfully!')
+                }, 500);
                 await router.push('/admin-panel/articles');
             } catch (error) {
                 dispatch(setLoading(false));
@@ -109,4 +112,12 @@ export async function getServerSideProps() {
     return {
         props: {},
     };
+}
+
+Edit.getLayout = (page) => {
+    return (
+        <AdminLayout>
+            {page}
+        </AdminLayout>
+    )
 }
