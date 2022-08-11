@@ -10,6 +10,7 @@ import {editArticle} from "@/store/slices/article-slice";
 import InputText from "@/components/ui/forms/input-text";
 import Textarea from "@/components/ui/forms/textarea";
 import Article from "@/interfaces/article";
+import {toast} from "react-toastify";
 
 const Edit: NextPage = () => {
     const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const Edit: NextPage = () => {
                 await editArticleFromService(newArticle);
                 dispatch(editArticle(newArticle));
                 setNewArticle(newArticle);
+                toast.success('Article edited successfully!');
                 dispatch(setLoading(false));
                 await router.push('/admin-panel/articles');
             } catch (error) {
