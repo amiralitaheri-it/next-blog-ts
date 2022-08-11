@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import {BellIcon, MenuAlt2Icon} from "@heroicons/react/solid";
 
-import SearchInput from "@/components/ui/form/search-input";
+import SearchInput from "@/components/ui/forms/search-input";
 import Loading from "@/components/ui/sections/loading";
 import UserNavigation from "@/interfaces/user-navigation";
 

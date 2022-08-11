@@ -13,7 +13,7 @@ import DeleteModal from "@/components/articles/delete-modal";
 import {RootState} from "@/store/index";
 import Article from "@/interfaces/article";
 
-const Single: NextPage = () => {
+const Single: NextPage & any = () => {
     const dispatch = useDispatch();
 
     const router: NextRouter = useRouter();
