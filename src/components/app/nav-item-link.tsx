@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from "next/link";
 import {NextRouter, useRouter} from "next/router";
+import {useTranslation} from "react-i18next";
 
 const NavItemLink: React.FC = () => {
     const router: NextRouter = useRouter();
+    const {t, i18n} = useTranslation();
 
     const currentRoute: string = router.pathname;
 
@@ -18,7 +20,7 @@ const NavItemLink: React.FC = () => {
                         ? activeClassLink
                         : defaultClassLink
                     }>
-                        Home
+                        {t("headerheaders-nav-link.home")}
                     </a>
                 </Link>
             </li>

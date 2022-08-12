@@ -1,0 +1,10 @@
+{
+  "headers-nav-link": {
+    "home": "صفحه اصلی",
+    "articles": "مقالات",
+    "about-us": "درباره ما",
+    "contact-us": "تماس با ما",
+    "login": "ورود",
+    "register": "ثبت نام"
+  }
+}

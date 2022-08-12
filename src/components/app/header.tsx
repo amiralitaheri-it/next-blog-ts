@@ -5,12 +5,14 @@ import Logo from "@/components/app/logo";
 import BurgerMenu from "@/components/app/burger-menu";
 import NavLink from "@/components/ui/sections/nav-link";
 import Link from "@/interfaces/link";
+import {useTranslation} from "react-i18next";
 
 const Header: React.FC = () => {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
+    const {t, i18n} = useTranslation();
 
     const links: Link[] = [
-        {route: '/', label: 'Home'},
+        {route: '/', label: t('headers-nav-link.home')},
         {route: '/articles', label: 'Articles'},
         {route: '/about-us', label: 'About us'},
         {route: '/contact-us', label: 'Contact us'},
