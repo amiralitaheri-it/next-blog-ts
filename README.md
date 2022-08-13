@@ -4,6 +4,13 @@
 
 Simple Blog that is using nextjs :) 
 
+### Install & run project
+
+You can install and run the project from codes below:
+
+- `npm install`
+- `npm run dev`
+
 ## Pages Routes List
 <p align="center">
 <a href="https://uupload.ir/" target="_blank"><img src="https://s6.uupload.ir/files/blog_u9fp.png" border="0" alt="آپلود عکس" /></a>
