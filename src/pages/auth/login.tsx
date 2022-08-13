@@ -7,17 +7,10 @@ import {router} from "next/client";
 import AuthLayout from "@/components/layouts/auth-layout";
 import HeaderForm from "@/components/auth/header-form";
 
-const Login: NextPage = () => {
+// Uncompleted component
+const Login: NextPage & any = () => {
     const loginUser = () => {
-        toast('Login successfully!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        toast.success('Login successfully!');
         router.push('/');
     };
 

@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 
 const Header: React.FC = () => {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const links: Link[] = [
         {route: '/', label: t('headers-nav-link.home')},

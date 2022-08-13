@@ -6,10 +6,11 @@ import type {NextComponentType} from 'next';
 
 import AppLayout from '@/components/layouts/app-layout';
 import {store} from "@/store/index";
+import {ThemeProvider} from "next-themes";
 
 import 'react-toastify/dist/ReactToastify.css';
 import "nprogress/nprogress.css";
-import 'styles/globals.css'
+import 'styles/globals.css';
 import {ToastContainer} from "react-toastify";
 import NProgress from 'nprogress';
 
@@ -24,7 +25,14 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
     const getLayout = Component.getLayout || ((page: ReactNode) => <Provider store={store}><AppLayout>{page}</AppLayout><ToastContainer/></Provider>);
 
     return (
-        getLayout(<Provider store={store}><Component {...pageProps} /><ToastContainer/></Provider>)
+        getLayout(
+            <Provider store={store}>
+                <ThemeProvider enableSystem={true} attribute="class">
+                    <Component {...pageProps} />
+                </ThemeProvider>
+                <ToastContainer/>
+            </Provider>
+        )
     );
 }
 
