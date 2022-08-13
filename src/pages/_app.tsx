@@ -4,15 +4,17 @@ import {ReactNode} from 'react';
 import {Router} from "next/router";
 import type {NextComponentType} from 'next';
 
+import {ThemeProvider} from "next-themes";
+import {ToastContainer} from "react-toastify";
+import NProgress from 'nprogress';
+
 import AppLayout from '@/components/layouts/app-layout';
 import {store} from "@/store/index";
-import {ThemeProvider} from "next-themes";
 
 import 'react-toastify/dist/ReactToastify.css';
 import "nprogress/nprogress.css";
 import 'styles/globals.css';
-import {ToastContainer} from "react-toastify";
-import NProgress from 'nprogress';
+
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

@@ -4,6 +4,7 @@ import HeaderAuthButtons from "@/components/app/header-auth-buttons";
 import Logo from "@/components/app/logo";
 import BurgerMenu from "@/components/app/burger-menu";
 import NavLink from "@/components/ui/sections/nav-link";
+import DarkmodeSwitchButton from "@/components/app/darkmode-switch-button";
 import Link from "@/interfaces/link";
 import {useTranslation} from "react-i18next";
 
@@ -28,6 +29,7 @@ const Header: React.FC = () => {
                     <span className='flex mt-1'>
                         <HeaderAuthButtons/>
                     </span>
+                    <DarkmodeSwitchButton/>
                 </span>
                 <BurgerMenu burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu}/>
 
