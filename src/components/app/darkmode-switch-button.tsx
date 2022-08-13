@@ -6,6 +6,7 @@ import {useTheme} from "next-themes";
 const DarkmodeSwitchButton = () => {
 
     const {systemTheme, theme, setTheme} = useTheme();
+    
     const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
@@ -35,4 +36,4 @@ const DarkmodeSwitchButton = () => {
     );
 }
 
-export default React.memo(DarkmodeSwitchButton);
+export default DarkmodeSwitchButton;
