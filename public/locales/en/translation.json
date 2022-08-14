@@ -1,10 +1,8 @@
 {
-  "headers-nav-link": {
-    "home": "Home",
-    "articles": "Articles",
-    "about-us": "About us",
-    "contact-us": "Contact us",
-    "login": "Login",
-    "register": "Register"
-  }
+  "home": "Home",
+  "articles": "Articles",
+  "about-us": "About us",
+  "contact-us": "Contact us",
+  "login": "Login",
+  "register": "Register"
 }

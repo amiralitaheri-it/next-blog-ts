@@ -5,21 +5,9 @@ import Logo from "@/components/app/logo";
 import BurgerMenu from "@/components/app/burger-menu";
 import NavLink from "@/components/ui/sections/nav-link";
 import DarkmodeSwitchButton from "@/components/app/darkmode-switch-button";
-import Link from "@/interfaces/link";
-import {useTranslation} from "react-i18next";
 
 const Header: React.FC = () => {
     const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
-    const {t} = useTranslation();
-
-    const links: Link[] = [
-        {route: '/', label: t('headers-nav-link.home')},
-        {route: '/articles', label: 'Articles'},
-        {route: '/about-us', label: 'About us'},
-        {route: '/contact-us', label: 'Contact us'},
-        {route: '/auth/login', label: 'Login'},
-        {route: '/auth/register', label: 'Register'},
-    ];
 
     return (
         <nav className="bg-white border-gray-200 mt-3 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 top-10 grid place-items-center">
@@ -40,7 +28,7 @@ const Header: React.FC = () => {
                 }>
                     <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium px-3 transition duration-200">
 
-                        <NavLink links={links}/>
+                        <NavLink/>
                     </ul>
                 </div>
             </div>
