@@ -7,7 +7,7 @@ import {toast} from "react-toastify";
 import AuthLayout from "@/components/layouts/auth-layout";
 import HeaderForm from "@/components/auth/header-form";
 
-// Uncompleted component
+//TODO: Componentization
 const Register: NextPage & any = () => {
     const RegisterUser = () => {
         toast.success('Registered successfully!');

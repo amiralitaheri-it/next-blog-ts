@@ -7,7 +7,7 @@ import {router} from "next/client";
 import AuthLayout from "@/components/layouts/auth-layout";
 import HeaderForm from "@/components/auth/header-form";
 
-// Uncompleted component
+//TODO: Componentization
 const Login: NextPage & any = () => {
     const loginUser = () => {
         toast.success('Login successfully!');
